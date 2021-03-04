@@ -1,10 +1,18 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+package com.perfecto.sampleproject;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.remote.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.DriverCommand;
+import org.openqa.selenium.remote.RemoteExecuteMethod;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.perfecto.reportium.client.ReportiumClient;
 import com.perfecto.reportium.client.ReportiumClientFactory;
@@ -32,12 +40,6 @@ public class J03WorkingWithCode {
 
         //TODO: Change your device ID
         capabilities.setCapability("deviceName", "RF8M329FK3X");
-
-        // Use the automationName capability to define the required framework - Appium (this is the default) or PerfectoMobile.
-        // capabilities.setCapability("automationName", "PerfectoMobile");
-
-        // Call this method if you want the script to share the devices with the Perfecto Lab plugin.
-        PerfectoLabUtils.setExecutionIdCapability(capabilities, host);
 
         // Name your script
         // capabilities.setCapability("scriptName", "RemoteWebDriverTest");

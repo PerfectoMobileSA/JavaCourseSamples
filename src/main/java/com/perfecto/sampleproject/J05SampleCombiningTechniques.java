@@ -1,3 +1,4 @@
+package com.perfecto.sampleproject;
 
 import java.net.URL;
 import java.util.HashMap;
