@@ -34,14 +34,10 @@ public class PerfectoSelenium {
 		capabilities.setCapability("securityToken", Utils.fetchSecurityToken(securityToken));
 		capabilities.setCapability("platformName", "Android||iOS");
 		capabilities.setCapability("useAppiumForWeb", true);
-		try{
-			driver = new RemoteWebDriver(new URL("https://" + Utils.fetchCloudName(cloudName) + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities);
-			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-			driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-		}catch(SessionNotCreatedException e){
-			throw new RuntimeException("Driver not created with capabilities: " + capabilities.toString());
-		}
-
+		driver = new RemoteWebDriver(new URL("https://" + Utils.fetchCloudName(cloudName) + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+			
 		reportiumClient = Utils.setReportiumClient(driver, reportiumClient); //Creates reportiumClient
 		reportiumClient.testStart("Perfecto mobile web test", new TestContext("tag2", "tag3")); //Starts the reportium test
 		reportiumClient.stepStart("browser navigate to perfecto"); //Starts a reportium step

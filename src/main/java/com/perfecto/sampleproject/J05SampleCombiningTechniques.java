@@ -48,12 +48,8 @@ public class J05SampleCombiningTechniques {
 		capabilities.setCapability("openDeviceTimeout", 2);
 		capabilities.setCapability("noReset", "true");
 		capabilities.setCapability("appPackage", "io.perfecto.expense.tracker");
-		try{
-			driver = new AppiumDriver<>(new URL("https://" + Utils.fetchCloudName(cloudName)  + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities); 
-			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		}catch(SessionNotCreatedException e){
-			throw new RuntimeException("Driver not created with capabilities: " + capabilities.toString());
-		}
+		driver = new AppiumDriver<>(new URL("https://" + Utils.fetchCloudName(cloudName)  + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities); 
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		try
 		{
 		reportiumClient = Utils.setReportiumClient(driver, reportiumClient); //Creates reportiumClient

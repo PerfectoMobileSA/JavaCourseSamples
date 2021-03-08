@@ -44,12 +44,8 @@ public class PerfectoAppium {
 		capabilities.setCapability("openDeviceTimeout", 2);
 		capabilities.setCapability("appPackage", "com.android.settings");
 		capabilities.setCapability("appActivity", "com.android.settings.Settings");	
-		try{
-			driver = (RemoteWebDriver)(new AppiumDriver<>(new URL("https://" + Utils.fetchCloudName(cloudName)  + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities)); 
-			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		}catch(SessionNotCreatedException e){
-			throw new RuntimeException("Driver not created with capabilities: " + capabilities.toString());
-		}
+		driver = (RemoteWebDriver)(new AppiumDriver<>(new URL("https://" + Utils.fetchCloudName(cloudName)  + ".perfectomobile.com/nexperience/perfectomobile/wd/hub"), capabilities)); 
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
 		reportiumClient = Utils.setReportiumClient(driver, reportiumClient); //Creates reportiumClient
 		reportiumClient.testStart("My Settings Test", new TestContext("tag2", "tag3")); //Starts the reportium test
